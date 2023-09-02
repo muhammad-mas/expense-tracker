@@ -1,9 +1,9 @@
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import ExpenseItem from "./components/ExpenseItem";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -47,6 +47,6 @@ function App() {
       </section>
     </div>
   );
-}
+};
 
 export default App;
