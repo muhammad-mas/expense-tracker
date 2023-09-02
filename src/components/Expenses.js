@@ -1,5 +1,5 @@
 import ExpenseItem from "./ExpenseItem";
-
+import "./Expenses.css";
 function Expenses({ expenses }) {
   function mapExpenses() {
     return expenses.map((expense) => {
@@ -14,6 +14,6 @@ function Expenses({ expenses }) {
       );
     });
   }
-  return <div>{mapExpenses()}</div>;
+  return <div className="expenses">{mapExpenses()}</div>;
 }
 export default Expenses;
