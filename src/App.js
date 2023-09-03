@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
-  const expenses = [
+  const [expenses, setExpenses] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -24,7 +25,12 @@ const App = () => {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
+  const onAddExpenseToList = (expense) => {
+    setExpenses((prev) => {
+      return [...prev, expense];
+    });
+  };
 
   return (
     <div className="App">
@@ -43,6 +49,7 @@ const App = () => {
         </a>
       </header>
       <section>
+        <NewExpense onAddExpense={onAddExpenseToList}></NewExpense>
         <Expenses expenses={expenses} />
       </section>
     </div>
