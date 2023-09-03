@@ -4,7 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
 function Expenses({ expenses }) {
-  const [year, setFilterYear] = useState(null);
+  const [year, setFilterYear] = useState("");
   function onSelectFilter(year) {
     setFilterYear(year);
   }
@@ -43,7 +43,10 @@ function Expenses({ expenses }) {
 
   return (
     <div>
-      <ExpensesFilter onFilterSelected={onSelectFilter}></ExpensesFilter>
+      <ExpensesFilter
+        selected={year}
+        onFilterSelected={onSelectFilter}
+      ></ExpensesFilter>
       {mapExpenses()}
     </div>
   );
