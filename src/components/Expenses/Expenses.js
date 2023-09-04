@@ -30,26 +30,25 @@ function Expenses({ expenses }) {
       })
       .map((expense) => {
         return (
-          <Card className="expenses" key={expense.id}>
-            <ExpenseItem
-              title={expense.title}
-              amount={expense.amount}
-              id={expense.id}
-              date={expense.date}
-            />
-          </Card>
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            id={expense.id}
+            date={expense.date}
+          />
         );
       });
   }
 
   return (
-    <div>
+    <Card className="expenses">
       <ExpensesFilter
         selected={year}
         onFilterSelected={onSelectFilter}
       ></ExpensesFilter>
       {mapExpenses()}
-    </div>
+    </Card>
   );
 }
 export default Expenses;
