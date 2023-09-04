@@ -3,43 +3,30 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 function Expenses({ expenses }) {
   const [year, setFilterYear] = useState("");
 
   function onSelectFilter(year) {
     setFilterYear(year);
   }
-  function mapExpenses() {
-    return expenses
-      .filter((expense) => {
-        if (year) {
-          // console.log(
-          //   expense.date.getFullYear() == year,
-          //   expense.date.getFullYear() === year,
-          //   expense.date.getFullYear(),
-          //   year
-          // );
-          if (expense.date.getFullYear() == year) {
-            return true;
-          } else {
-            return false;
-          }
-        } else {
-          return true;
-        }
-      })
-      .map((expense) => {
-        return (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            id={expense.id}
-            date={expense.date}
-          />
-        );
-      });
-  }
+  let filteredExpenses = expenses.filter((expense) => {
+    if (year) {
+      // console.log(
+      //   expense.date.getFullYear() == year,
+      //   expense.date.getFullYear() === year,
+      //   expense.date.getFullYear(),
+      //   year
+      // );
+      if (expense.date.getFullYear() == year) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  });
 
   return (
     <Card className="expenses">
@@ -47,7 +34,7 @@ function Expenses({ expenses }) {
         selected={year}
         onFilterSelected={onSelectFilter}
       ></ExpensesFilter>
-      {mapExpenses()}
+      <ExpensesList filteredExpenses={filteredExpenses}></ExpensesList>
     </Card>
   );
 }
