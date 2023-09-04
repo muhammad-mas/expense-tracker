@@ -5,6 +5,7 @@ import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
 function Expenses({ expenses }) {
   const [year, setFilterYear] = useState("");
+
   function onSelectFilter(year) {
     setFilterYear(year);
   }
